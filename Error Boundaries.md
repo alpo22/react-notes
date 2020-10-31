@@ -8,11 +8,10 @@ A Component becomes an  `Error Boundary Component`  if it uses one of:
 -   `componentDidCatch()`  - for logging (like to a service)
 
 A few caveats:
-- it must be a class component, not a function component.
-- it will not work if the error is thrown on an event handler, so throw the error in a hook 
+- it must be a class component, not a function component
+- it will not work if the error is thrown in an event handler, so throw the error in a hook 
 
-For example:
-
+For example https://codepen.io/alpo22/pen/QWEmVzg?editors=001:
 ```
 class MyErrorBoundary extends React.Component {
   state = {
