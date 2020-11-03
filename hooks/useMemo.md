@@ -4,9 +4,8 @@
 
 Memoize (cache) a value. Ask yourself, _"is this really expensive to calculate?"_  If so, memoize it so its not recalculated on re-render (unless its dependencies change).
 
-    const numDec = 100; // number of decimals
-    const pi = useMemo(() => computePi(numDec), [numDec]);
+    const sortedData = useMemo(() => ... sort the raw data ..., [rawData]);
 
 It runs while the page is rendering, so may appear slow the first time.
 
-A practical usage example is a component that accepts some raw data as a prop, sorts it, then displays it.  The sorted data could be memoized, so that it is not re-sorted on every render (internal state changes, or the parent updates causing this component to re-render).
+A practical example is a component that accepts some raw data as a prop, sorts it, then displays it.  The _sorted data_ could be memoized so that it is not re-sorted on re-render.  It will still get re-sorted if the `rawData` prop changes, but we don't want to re-sort if this component's other state changes, or the parent updates causing this component to re-render.
