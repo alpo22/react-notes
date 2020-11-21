@@ -40,7 +40,7 @@ A working example can be seen here: https://codesandbox.io/s/frosty-voice-b9je8?
 
 You'd also want to use this for a function that is a dependency in a hook:
 
-    useEffect(() => {...}, [myFunction])`)
+    useEffect(() => {...}, [myFunction])
 
 Imagine your effect caused a state change. That would cause the component to re-render, which would redefine the function, which would fire the useEffect hook, which would cause the component to re-render, which would redefined the function, ... infintely looping.
 
