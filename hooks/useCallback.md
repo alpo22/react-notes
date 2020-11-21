@@ -11,7 +11,7 @@
   
 Every time a component's state changes, it re-renders.  If a component declared a function that was passed down to a child component, whenever the parent re-rendered, the child would also re-render -- even if it used `React.memo()`.
 
-##### Use Case 1:
+#### Use Case 1:
 
 Imagine you have a `ToDoList` app which holds all the state.  At the top of this app is a Form component where you can type in a new item, and beneath is a list of all the Items. Something like this:
 
@@ -34,7 +34,7 @@ To fix that, you have to do two things:
 1) wrap the `Item` component in `React.memo()` so it only re-renders when its state or props have changed -- not its parent's state.
 2) wrap `handleToggleIsChecked` in `React.useCallback()` so it does not get redefined each time the `ToDoListApp`'s state changes (i.e. each keypress)
 
-##### Use Case 2:
+#### Use Case 2:
 
 You'd also want to use this for a function that is a dependency in a hook:
 
