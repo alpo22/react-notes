@@ -1,33 +1,44 @@
 ## useCallback
 
-> Memoize a function.
+> Memoize (cache) a callback function that is passed to child components so the children do not re-render when the parent re-renders (unless the functions dependencies change).
 
-Memoizes a function (memoization is caching the result of an expensive function call). Functions inside a Component are re-created on every re-render, but you don't want that when:
-  - the function is a dependency in a hook (e.g. `useEffect(() => {...}, [myFunction])`)
-  - your component is wrapped in a `React.memo()` and accepts a callback prop (e.g. `React.memo(SomeComponent, myFunction)`)
+    const handleToggleIsChecked = React.useCallback(
+      (itemId) => {
+        //...
+      },
+      [items]
+    );
+  
+Every time a component's state changes, it re-renders.  If a component declared a function that was passed down to a child component, whenever the parent re-rendered, the child would also re-render -- even if it used `React.memo()`.
 
-Prevents a function from being created on every single render, which can prevent a component from re-rendering.
+##### Use Case 1:
 
-For example: I have a `<ToDoList>` component, with 50 `<ToDoItem>` children. The `<ToDoList>` holds the state of the `<ToDoItem>`s (if they are selected). To each `<ToDoItem>` I pass down the `onChangeIsSelected` function. Clicking a `<ToDoItem>` will call this function, which will change the parent `<ToDoList>`'s state, which will make it re-render.
-As-is, all of the `ToDoItem`s would also re-render (since their parent's state changed).  To try and solve that, you'd wrap the `ToDoItem` in `React.memo`, but that wouldn't stop them from re-rendering (because the `onChangeIsSelected` prop passed into each would be different on every re-render of `ToDoList`).
-To solve this we need to use both  `React.memo` *and* `useCallback`.
+Imagine you have a `ToDoList` app which holds all the state.  At the top of this app is a Form component where you can type in a new item, and beneath is a list of all the Items. Something like this:
 
-It has the same API as `useEffect`:
+    <ToDoListApp>
+      state = newItemText, items;
 
-    const someFunction = React.useCallback(() => {
-      //...
-    }, []);
+      function handleToggleIsChecked(id) { ... }
+  
+      <AddItemForm text={} onChangeText={} onSubmit={} />
 
-    function ToDoList() {
-        const [items, setItems] = React.useState(Array(50).fill(false));
+      <Item isChecked={} onToggleIsChecked={handleToggleIsChecked} text={} />
+      <Item isChecked={} onToggleIsChecked={handleToggleIsChecked} text={} />
+      <Item isChecked={} onToggleIsChecked={handleToggleIsChecked} text={} />
+    </ToDoListApp>
 
-        function toggleClick(i) {
-          //toggle items[i] and update state
-        }
-        
-        return items.map((item, i) => <Item isChecked={item} onClick={() => toggleClick(i)}
-    }
-    
-    function Item({isChecked, onClick) {
-      return <input type="checkbox" checked={isChecked} onChange={onClick} />;
-    }
+When you type in the text for a new item, each time you press a key, the `ToDoList` app's state changes, so it re-renders itself and all of its children. If you had 20 Items in your list, every single one of them would re-render with each keypress, which is not ideal.
+
+To fix that, you have to do two things:
+
+1) wrap the `Item` component in `React.memo()` so it only re-renders when its state or props have changed -- not its parent's state.
+2) wrap `handleToggleIsChecked` in `React.useCallback()` so it does not get redefined each time the `ToDoListApp`'s state changes (i.e. each keypress)
+
+##### Use Case 2:
+
+You'd also want to use this for a function that is a dependency in a hook:
+
+    useEffect(() => {...}, [myFunction])`)
+
+Imagine your effect caused a state change. That would cause the component to re-render, which would redefine the function, which would fire the useEffect hook, which would cause the component to re-render, which would redefined the function, ... infintely looping.
+
