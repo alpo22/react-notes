@@ -34,6 +34,8 @@ To fix that, you have to do two things:
 1) wrap the `Item` component in `React.memo()` so it only re-renders when its state or props have changed -- not its parent's state.
 2) wrap `handleToggleIsChecked` in `React.useCallback()` so it does not get redefined each time the `ToDoListApp`'s state changes (i.e. each keypress)
 
+A working example can be seen here: https://codesandbox.io/s/frosty-voice-b9je8?file=/src/ToDoList.js:762-1036
+
 #### Use Case 2:
 
 You'd also want to use this for a function that is a dependency in a hook:
