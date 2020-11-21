@@ -1,7 +1,15 @@
-﻿## React.memo (not _React.useMemo_) 
+## React.memo (not _React.useMemo_) 
 
-> Cache a component.  This is not useMemo.
+> Memoize (cache) a component so it won't re-render unless its props or state change (it will not re-render because its parent did).
 
-Memoize a Component (memoization is caching the result of an expensive function call, and a component is just a function).
-Wrap a Component with `React.memo()` and it wont re-render if its parent re-renders, unless its own props have changed.
+Imagine two components on a page: a Form and a Graph.  We do not want the Graph to re-render every time a key is pressed in the Form, so we would make the Graph component use `React.memo()`.
 
+#### Example
+
+    import React from "react";
+
+    const MyComponent = React.memo(() => {
+       //...
+    });
+
+    export default MyComponent;
