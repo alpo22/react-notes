@@ -35,7 +35,7 @@ export const LocaleContext = React.createContext();
 	
 export default function LocaleProvider({children}) {
   const [theme, setTheme] = React.useState('dark');
-  const thingsToShare = { theme, setTheme};
+  const thingsToShare = { theme, setTheme };
 
   return (
     <LocaleContext.Provider value={thingsToShare}>
