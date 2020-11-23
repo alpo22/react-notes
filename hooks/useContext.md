@@ -34,7 +34,8 @@ With context, this drilling can be avoided and whatever is added to context beco
 export const LocaleContext = React.createContext();
 	
 export default function LocaleProvider({children}) {
-  const thingsToShare = { theme: 'dark', setTheme: () => {}, ...};
+  const [theme, setTheme] = React.useState('dark');
+  const thingsToShare = { theme, setTheme};
 
   return (
     <LocaleContext.Provider value={thingsToShare}>
@@ -42,7 +43,8 @@ export default function LocaleProvider({children}) {
     </LocaleContext.Provider>
   );
 }
-
+```
+```javascript
 //App.js
 import LocaleProvider from './MyContext.js';
 
@@ -58,7 +60,8 @@ function App() {
     </LocaleProvider>
   );
 }
-
+```
+```javascript
 //Header.js
 import { LocaleContext } from './MyContext.js';
 
