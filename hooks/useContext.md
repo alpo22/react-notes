@@ -6,7 +6,7 @@ Lets you subscribe to React context without nesting.
 
 ```javascript
 //MyContext.js
-const LocaleContext = React.createContext();
+export const LocaleContext = React.createContext();
 	
 export default function LocaleProvider({children}) {
   const thingsToShare = { name: 'Jamie', setName: () => {}, ...};
@@ -22,7 +22,7 @@ export default function LocaleProvider({children}) {
 import { LocaleContext } from './MyContext.js';
 
 function Header() {
-  const context = useContext(LocaleContext);
+  const context = React.useContext(LocaleContext);
   return <h1>Hello, {context.name}</h1>;
 }
 
