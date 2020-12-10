@@ -4,7 +4,7 @@
 
 Same as `useState`, but need it when you will be setting states back-to-back and you want to guarantee the order in which they are set, i.e. one of your states relies on another one of your states.
 
-Since it is hard to know in advance if you'll need this, maybe it's best to use them on non-trivial code.
+Since it is hard to know in advance if you'll need this, maybe it's best to use them on non-trivial code or whenever your state is an object.
 
 
     import React from "react";
