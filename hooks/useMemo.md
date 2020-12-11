@@ -4,7 +4,7 @@
 
 Memoize (cache) a value. Ask yourself, _"is this really expensive to calculate?"_  If so, memoize it so its not recalculated on re-render (unless its dependencies change).
 
-    const sortedData = useMemo(() => ... sort the raw data ..., [rawData]);
+    const sortedData = useMemo(() => ...sort and return the raw data..., [rawData]);
 
 It runs while the page is rendering, so may appear slow the first time.
 
