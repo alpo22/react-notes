@@ -1,4 +1,4 @@
-﻿## Prop Collections
+## Prop Collections
 
 > Return commonly-used props for a component that uses this custom hook.
 
