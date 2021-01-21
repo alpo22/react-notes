@@ -1,22 +1,26 @@
 ## Context Module Functions
 
-> If we expose the `dispatch` function and the consumer will need to call it multiple times to accomplish something, instead expose a function that itself does the multiple dispatches.
+> If our component uses context and a reducer and makes asynchronous UI updates, and the consumer will need to call it multiple times to accomplish something, expose a function that accepts the `dispatch` function as a prop, which itself does the multiple dispatches.
 
-E.g. in a "File Uploader" component the state changes from "pending", to "uploading", to "complete" or "error".  Instead of relying on the consumer to call:
+E.g. in a "File Uploader" component the state changes from "pending", to "uploading", to "complete"/"error".  Instead of relying on the consumer to have this code:
 
 ```
-disaptch({type: 'pending'});
-disaptch({type: 'uploading', data: fileData})
-  .then(() => {
-    dispatch({type: 'complete'});
-  })
-  .catch((e) => {
-    dispatch({type: 'error', data: e});
+onUpload() {
+  disaptch({type: 'pending'});
+  disaptch({type: 'uploading', data: fileData})
+    .then(() => {
+      dispatch({type: 'complete'});
+    })
+    .catch((e) => {
+      dispatch({type: 'error', data: e});
   });
+}
 ```
 
-we can have them just call:
+they can have this code:
 ```
-upload(dispatch, fileData);
+onUpload() {
+  upload(dispatch, fileData);
+}
 ```
-and we handle all the "dispatching" correctly, internally in our component. This sounds more like basic programming pricinciples (DRY) and a better API for the consumer.
+and we handle all the "dispatching" in internally in our component. This sounds more like basic programming pricinciples (DRY) and a better API for the consumer.
