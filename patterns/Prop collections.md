@@ -2,6 +2,8 @@
 
 > Return commonly-used props for a component that uses this custom hook.
 
+Dodds recommends using [Prop getters](https://github.com/alpo22/react-notes/blob/master/patterns/Prop%20getters.md) pattern as it does this and more.
+
 ```javascript
 // useSwitch.js
 function useSwitch() {
