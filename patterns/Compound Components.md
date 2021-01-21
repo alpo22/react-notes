@@ -45,9 +45,9 @@ The above solution would not work if any of the `<Tab>` components were not a di
 	  </div>
     </Tabs>
     
-The solution is to share context from `<Tabs>` and consume it in `<Tab>`:
+The solution is to provide context from `<Tabs>` and consume it in `<Tab>`:
 - create a  `React.createContext`  
-- add the provider in  `<Tabs>`. and consuming the context in the `<Tab>` component.
+- add the provider in `<Tabs>` and consume it in the child `<Tab>` component.
 
 Like this:
 
@@ -64,7 +64,7 @@ Like this:
     }
 
     function Tab({children, title}) {
-      const c = useContext(TabsContext);
+      const c = useContext(TabsContext); // now each `Tab` has access to state (no matter if it is a child/grandchild/great-grandchild, etc)
       
       return (
         <button
