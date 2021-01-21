@@ -1,8 +1,9 @@
 ﻿## Prop Collections
 
-> In a custom hook, add a property that contains props the consumer would want to apply to their Component that uses the hook.
+> Return commonly-used props for a component that uses this custom hook.
 
-    function useSwitchHook() {
+    // useSwitch.js
+    function useSwitch() {
       const [on, setOn] = React.useState(false);
       function toggle() {
         setOn(true);
@@ -18,7 +19,8 @@
       };
     }
     
+    // Switch.js
     function Switch() {
-      const {on, switchProps} = useSwitchHook();
+      const {on, switchProps} = useSwitch();
       return <button {...switchProps}>{on ? "On" : "Off"}</button>;
     }
