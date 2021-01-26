@@ -1,6 +1,6 @@
 ﻿## Control props
 
-> Allow a Component to work either `controlled` (manage state from outside) or `uncontrolled` (manage state from inside), by accepting optional props with the initial state and the handler to change them. That is: allow the consumer to take _Control_ of the component via _props_.
+> Allow a Component to work either `controlled` (manage state from outside) or `uncontrolled` (manage state from inside), by accepting optional props with the initial state and the handlers to change them. That is: allow the consumer to optionally take _Control_ of the component via _props_.
 
 For example, a `<Tabs>` component that internally keeps track of the active tab (uncontrolled):
 
@@ -21,7 +21,7 @@ export function Tabs() {
 }
 ```
 
-Using the `Control props` pattern this component can made to _also_ support being controlled, which would give the consumer the ability to externally change the active tab if they wanted to:
+Using the `Control props` pattern this component can made to _also_ support being controlled, which would give the consumer the ability to change the active tab if they wanted to:
 
 ```javascript
 //Tabs.js
