@@ -1,6 +1,6 @@
 ﻿## Control props
 
-> Allow a Component to work either `controlled` (manage state from outside) or `uncontrolled` (manage state from inside), by accepting props with the initial state and the handler to change them. That is: allow the consumer to take _Control_ of the component via _props_.
+> Allow a Component to work either `controlled` (manage state from outside) or `uncontrolled` (manage state from inside), by accepting optional props with the initial state and the handler to change them. That is: allow the consumer to take _Control_ of the component via _props_.
 
 For example, a `<Tabs>` component that internally keeps track of the active tab (uncontrolled):
 
