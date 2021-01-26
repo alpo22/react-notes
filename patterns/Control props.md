@@ -26,7 +26,7 @@ Using the `Control props` pattern this component can made to _also_ support bein
 ```javascript
 //Tabs.js
 export function Tabs({activeTabIndex, onClickTab}) {  
-  const [_activeTabIndex, _setActiveTabIndex] = React.useState(activeTabIndex === undefined ? 0 : );
+  const [_activeTabIndex, _setActiveTabIndex] = React.useState(activeTabIndex === undefined ? 0 : activeTabIndex);
   
   // render the tabs. when a tab is clicked, if activeTabIndex === undefined, fire _setActiveTabIndex. else, fire onClickTab
   // render tab[_activeTabIndex]'s content
