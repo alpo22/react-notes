@@ -21,7 +21,7 @@ export function Tabs() {
 }
 ```
 
-Using the `Control props` pattern this component can made to _also_ support being controlled, which would give the consumer the ability to programatically change the active tab if they wanted to:
+Using the `Control props` pattern this component can made to _also_ support being controlled, which would give the consumer the ability to externally change the active tab if they wanted to:
 
 ```javascript
 //Tabs.js
