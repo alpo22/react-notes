@@ -73,3 +73,39 @@ function Header() {
 
 Kent Dodds implied this isn't the best use of context; its best use would be for sharing data between the parent `<Tabs>` component and the child `<Tab>` components in a library.
 
+### A simpler example
+```javascript
+// Context.js
+import React from "react";
+
+const MyContext = React.createContext({});
+
+export default MyContext;
+```
+
+```javascript
+// Parent.js
+import React from "react";
+import Context from "./Context";
+
+export function Parent() {
+  const thingsToExpose = { name: "Jamie", gender: "M" };
+  
+  return (
+    <Context.Provider value={thingsToExpose}>
+      <Child />
+    </Context.Provider>
+  );
+}
+```
+
+```javascript
+// Child.js
+import React from "react";
+import Context from "./Context";
+
+export function Child() {
+  const _context = React.useContext(Context);
+  return <h1>Hello {_context.name}</h1>
+}
+```
