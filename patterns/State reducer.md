@@ -1,6 +1,6 @@
 ﻿# State reducer
 
-> Make the component more flexible by giving the consumer the option to provide state control logic.
+> Make the component more flexible by allowing the consumer to provide the state control logic (an "inversion of control").
 
 Allow the consumer to provide the `reducer` so they can control the component's state as they want.  Additionally export the reducer and constants (types) so the consumer can override whichever actions they want.
 
