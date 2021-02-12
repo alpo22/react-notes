@@ -1,4 +1,4 @@
-## Mocking APIs
+## Mock an API
 
 Can use `msw` (https://testing-library.com/docs/react-testing-library/example-intro/) but I think `fetch-mock` is simpler (https://www.npmjs.com/package/fetch-mock) -- at least for GETs, haven't tried for POSTs.
 
