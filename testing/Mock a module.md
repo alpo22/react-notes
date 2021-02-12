@@ -1,4 +1,4 @@
-## Mocking a module
+## Mock a module
 
 > Mock complex (or third-party) modules that interfere with your tests simplicity.
 
