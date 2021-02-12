@@ -18,4 +18,5 @@ test('demonstrating lots of things', () => {
   
   await waitForElementToBeRemoved(() => screen.getByText(/spinner/))  // wait for element to disappear
   
+  await findByText(/welcome/)                                         // wait for element to appear
 })
