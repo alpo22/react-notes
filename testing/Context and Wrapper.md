@@ -24,3 +24,5 @@ test('...', () => {
   ...
 });
 ```
+
+Dodds suggests making your own `render`, which first wraps everything with a wrapper like this. So all your components have all your providers.
