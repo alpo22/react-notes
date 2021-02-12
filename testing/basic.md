@@ -4,7 +4,7 @@ import {render, screen, fireEvent, waitForElementToBeRemoved} from '@testing-lib
 import userEvent from '@testing-library/user-event'
 import LoginForm from '../../components/LoginForm'
 
-test('demonstrating lots of things', () => {
+test('demonstrating lots of things', async () => {
   const handleSubmit = jest.fn()                                            // mock function
   render(<LoginForm onClick={handleSubmit} />)
   
