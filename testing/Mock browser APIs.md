@@ -1,4 +1,4 @@
-## Mock Browser API
+## Mock browser APIs
 
 Our tests run via Node, and some `window` functions are not available in Node's simulated DOM environment (jsdom). So we have to supply them:
 
