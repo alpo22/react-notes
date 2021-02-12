@@ -18,7 +18,7 @@ test('demonstrating lots of things', async () => {
   fireEvent.click(submitButton)                                             // click event
   expect(handleSubmit).toHaveBeenCalled()                                   // assertion
   
-  await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i))  // wait for element to disappear
+  await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i))  // wait for element to disappear (made `async` above)
   
   expect(screen.getByText(/hello/i).toBeInTheDocument()
 })
