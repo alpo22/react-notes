@@ -16,8 +16,6 @@ test('demonstrating lots of things', () => {
   fireEvent.click(submitButton)                                       // click event
   expect(handleSubmit).toHaveBeenCalled()                             // assertion
   
-  // wait for element to disappear (or element to appear)
+  await waitForElementToBeRemoved(() => screen.getByText(/spinner/))  // wait for element to disappear
+  
 })
-
-
-// mock http requests: use `msw`
