@@ -10,7 +10,7 @@ import {render, screen, act} from '@testing-library/react';
 
 it('some test', () => {
   ...
-  await act(async () => {
+  await act(() => {
     // the thing that is changing state goes here
   });
 });
