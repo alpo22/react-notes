@@ -10,7 +10,7 @@ import userCounter from './hooks/use-counter';  // has `count` in state, and `in
 
 test('...', () => {
   let { result } = renderHook(useCounter);
-  expect(result.current.count).toBe(0);         // notice it is `.current`
+  expect(result.current.count).toBe(0);
   act(() => result.current.increment());        // must be wrapped in `act` since it changes state
   expect(result.current.count).toBe(1);
 });
