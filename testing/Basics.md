@@ -22,6 +22,7 @@ test('demonstrating lots of things', async () => {
   
   expect(screen.getByText(/hello/i)).toBeInTheDocument()
   expect(screen.queryByRole('button')).not.toBeInTheDocument()              // use `queryBy` when checking if NOT in the document
-  
-  // there is also a `rerender` function which allows you to re-render the SAME component but with new props
 })
+```
+
+There is also a `rerender` function (returned by `render()`) which allows you to re-render the SAME component but with new props
