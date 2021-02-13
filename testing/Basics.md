@@ -25,4 +25,4 @@ test('demonstrating lots of things', async () => {
 })
 ```
 
-There is also a `rerender` function (returned by `render()`) which allows you to re-render the SAME component but with new props
+There is also a `rerender` function (returned by `render()`) which allows you to re-render the SAME instance of a component, but with new props.
