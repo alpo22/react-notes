@@ -9,7 +9,7 @@ import { renderHook, act} from '@testing-library/react`;
 import userCounter from './hooks/use-counter';  // has `count` in state, and `increment` and `decrement` functions which modify it
 
 test('...', () => {
-  let result = renderHook(useCounter);
+  let { result } = renderHook(useCounter);
   expect(result.current.count).toBe(0);         // notice it is `.current`
   act(() => result.current.increment());        // must be wrapped in `act` since it changes state
   expect(result.current.count).toBe(1);
