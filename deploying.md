@@ -45,20 +45,20 @@ If any changes are merged to master while step 2 or 3 is in progress, step 5 wil
 
 ## How all these tools help
 
-#### If we used nothing
+#### If we used nothing:
   - it would be very slow and tedious to develop and release:
     - when you ran `yarn install`, each package would have its own `node_modules` folder with its own dependencies (even if there are duplicates across packages). This is very slow when developing.
     - imagine you are working on Paprika and you update the `<Button />`, then you worked on the `<OverflowMenu />` (which uses the `<Button />`).  To see the new `<Button />` in the `<OverflowMenu />`, you would have to update the Button's version in `OverflowMenu/package.json`
     - when releasing you would have to manually bump the versions in `Button/package.json` (and optionally every package that used the `<Button />`) and `OverflowMenu/package.json` (and optionally every package that used the `<OverflowMenu />`)
  
 
-#### Yarn Workspaces
+#### Yarn Workspaces:
 > Yarn Workspaces make it easier to develop on a repo with multiple packages.
  
 When you run `yarn install`, all dependencies are installed in the _root_ `node_modules` folder, making it run much faster (*except if a package used a different version of a component, in which case it used its own `node_modules` folder).
   
 
-#### Lerna
+#### Lerna:
 > Lerna transpiles ES6 with Babel and makes it easier to bump package versions.  It can also generate changelogs and publish, but we are using Changeset for this now.
 
   - link packages in a monorepo (`lerna bootstrap`), i.e. for each package:
@@ -68,7 +68,7 @@ When you run `yarn install`, all dependencies are installed in the _root_ `node_
   - bumps changed package versions (since last release to npmjs.org) and releases (`lerna publish --from-package`)
 
 
-#### Changeset
+#### Changeset:
 > Changeset is just the name of a command line tool that: bumps package versions, updates package changelogs and releases all modified packages to npmjs.org.
 
 1. Before merging your code, you run `yarn changeset` to automatically create a file in the `/.changesets` folder.  Each file will contain:
