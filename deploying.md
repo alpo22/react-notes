@@ -18,10 +18,6 @@ Reviewers should confirm the author ran `yarn changeset` -- that is, the PR incl
 If it does not exist, there is a "Github Action" bot [https://github.com/apps/changeset-bot] running on the Paprika repo that looks for this file.  The bot will add a message to the PR with a link that generates such a file. The reviewer should click the link, confirm the scope (patch/minor/major) and create the file.
 
 
-#### How it works
-When the release pipeline runs, it reads _all_ of the files within `/.changeset` to logically calculate semantic versions of all packages, and publishes them to npmjs.org.
-
-
 
 ### CI:
 
@@ -80,7 +76,14 @@ When you run `yarn install`, all dependencies are installed in the _root_ `node_
 - if the package had a patch/minor/major change
 - some text that is used for the release notes
 
-2. When releasing your packages, you run `yarn changeset version` which actually updates each packages version (in package.json) and updates its `changelog.md`. Then run `yarn changeset publish` which publishes to npmjs.org and deletes `/.changesets`. You should then commit these changes (so the updated versions and changelogs are merged).
+2. When releasing your packages, you run `yarn changeset version` which:
+- reads all of the files in `/.changesets`
+- sensibly updates each packages version in package.json (e.g. if one commit to a component did a "patch" update, and another did a "minor" commit, it will only bump the "minor" version -- not both)
+- updates its `changelog.md`
 
-The Changeset tool will "sensibly" combine releases (e.g. if one commit  did a "patch" update to a component, and another did a "minor" commit, it will only bump the "minor" version (not both).
+3. Then run `yarn changeset publish` which:
+- publishes to npmjs.org
+- deletes `/.changesets`
+You should then commit these changes (so the updated versions and changelogs are merged).
+
 
