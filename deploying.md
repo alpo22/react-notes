@@ -19,7 +19,7 @@ If it does not exist, there is a "Github Action" bot [https://github.com/apps/ch
 
 
 
-### CI:
+## CI:
 
 #### Pre-release on Semaphore
   - runs every 6 hours (8am, 2pm, 8pm, 2am)
@@ -43,7 +43,7 @@ If any changes are merged to master while step 2 or 3 is in progress, step 5 wil
 
 If any changes are merged to master while step 2 or 3 is in progress, step 5 will fail.  A Paprika administrator would need to pull the latest master and manually do the steps above in order to do a release.
 
-### How all these tools help
+## How all these tools help
 
 #### If we used nothing
   - it would be very slow and tedious to develop and release:
