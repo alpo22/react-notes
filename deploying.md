@@ -33,7 +33,7 @@ If it does not exist, there is a "Github Action" bot [https://github.com/apps/ch
 If any changes are merged to master while step 2 or 3 is in progress, step 5 will fail.  A Paprika administrator would need to pull the latest master and manually do the steps above in order to do a release.
 
 #### Release on Semaphore
-  - runs once a week (Saturday at noon?)
+  - runs once a week (Saturday at noon)
   - runs `.semaphore/release.yml` script, which:
     1. runs `yarn changeset pre exit` (exits "pre-release" mode, so versions are _not_ appended with `next`)
     2. runs `yarn changeset version` (which reads `/.changeset/*.md` and for each changed package: updates the version in package.json, updates its changelog.md)
