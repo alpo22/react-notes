@@ -13,13 +13,13 @@ The file should be committed and pushed.
 
 ### What PR reviewers have to do:
 
-Reviewers should confirm the author ran `yarn changeset` -- that is, they should confirm the PR includes `/.changeset/some-random-name.md`.
+Reviewers should confirm the author ran `yarn changeset` -- that is, the PR includes `/.changeset/some-random-name.md`.
 
-There is a "Github Action" bot [https://github.com/apps/changeset-bot] running on the Paprika repo that looks for this file.  If it does not exist, the bot adds a message to the PR with a link that generates such a file. The reviewer should click the link, confirm the scope (patch/minor/major) and create the file.
+If it does not exist, there is a "Github Action" bot [https://github.com/apps/changeset-bot] running on the Paprika repo that looks for this file.  The bot will add a message to the PR with a link that generates such a file. The reviewer should click the link, confirm the scope (patch/minor/major) and create the file.
 
 
 #### How it works
- When the release pipeline runs, it reads _all_ of the files within `/.changeset` to logically calculate semantic versions of all packages, and publishes them to npmjs.org.
+When the release pipeline runs, it reads _all_ of the files within `/.changeset` to logically calculate semantic versions of all packages, and publishes them to npmjs.org.
 
 
 
@@ -63,7 +63,7 @@ When you run `yarn install`, all dependencies are installed in the _root_ `node_
   
 
 #### Lerna
-> Lerna makes it easier to bump package versions and generate changelogs.
+> Lerna transpiles ES6 with Babel and makes it easier to bump package versions.  It can also generate changelogs and publish, but we are using Changeset for this now.
 
   - link packages in a monorepo (`lerna bootstrap`), i.e. for each package:
     - runs `npm install` (installs 3rd-party dependencies)
@@ -72,7 +72,7 @@ When you run `yarn install`, all dependencies are installed in the _root_ `node_
   - bumps changed package versions (since last release to npmjs.org) and releases (`lerna publish --from-package`)
 
 
-#### Changesets
+#### Changeset
 > Changeset is just the name of a command line tool that: bumps package versions, updates package changelogs and releases all modified packages to npmjs.org.
 
 1. Before merging your code, you run `yarn changeset` to automatically create a file in the `/.changesets` folder.  Each file will contain:
