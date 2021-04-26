@@ -22,6 +22,8 @@ test('demonstrating lots of things', async () => {
   await waitForElementToBeRemoved(() => screen.getByLabelText(/loading/i))       // wait for element to disappear (made `async` above)
   
   expect(screen.getByText(/hello/i)).toBeInTheDocument()
+  // expect(screen.getByLabelText('my checkbox label')).toHaveAttribute('checked', '');
+
   expect(screen.queryByRole('button')).not.toBeInTheDocument()                   // use `queryBy` when checking if NOT in the document
   expect(within(screen.getByRole('dialog')).getByText(...)).toBeInTheDocument(); // drill down the DOM
 })
