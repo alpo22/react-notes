@@ -1,6 +1,37 @@
 ## Mock an API
 
-Can use `msw` (https://testing-library.com/docs/react-testing-library/example-intro/) but I think `fetch-mock` is simpler (https://www.npmjs.com/package/fetch-mock) -- at least for GETs, haven't tried for POSTs.
+There are a few options:
+
+### mock in the test
+
+```javascript
+
+// component.js (simplified)
+import api as * from "./api";  // this file does `fetch()` calls from an API endpoint
+
+React.useEffect(() => {
+  const data = await api.getPlayers();
+  setPlayers(data)
+}, []);
+
+return players.map(player => <tr><td>{player.name}</td><td>{player.number}</td></tr>
+
+
+// component.spec.js
+jest.mock('../../api', () => ({
+  getPlayers: jest.fn(),
+  getTeams: jest.fn(),
+  ...
+}));
+
+beforeEach(() => {
+  api.getPlayers.mockResolvedValue({ data: [...] });
+  api.getTeams.mockResolvedValue({ data: [...] });
+});
+
+```
+
+### fetch-mock
 
 I built a Paprika component to make `fetch-mock` even easier to use:
 
@@ -45,3 +76,8 @@ export default function Story() {
   );
 }
 ```
+
+
+### MSW
+
+A third way is to use `msw` (https://testing-library.com/docs/react-testing-library/example-intro/) but I think `fetch-mock` is simpler (https://www.npmjs.com/package/fetch-mock) -- at least for GETs, haven't tried for POSTs.
