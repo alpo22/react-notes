@@ -1,6 +1,9 @@
 ﻿## useSomething (Custom Hook)
 
->Custom Hooks are a mechanism to reuse stateful logic, but every time you use a Custom Hook, all state and effects inside of it are fully isolated. It is a function with state that doesn't render anything.
+>A Custom Hook is a function with state that doesn't render anything. They allow you to:
+> 1) reuse stateful logic (every time you use one, all state and effects inside it are fully isolated), or
+> 2) isolate concerns
+
 
 ```javascript
 // useMovies.js
