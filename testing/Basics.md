@@ -23,6 +23,7 @@ test('demonstrating lots of things', async () => {
   
   expect(screen.getByText(/hello/i)).toBeInTheDocument()
   // expect(screen.getByLabelText('my checkbox label')).toHaveAttribute('checked', '');
+  // expect(screen.findByText('future content'));                                // wait for 'future content' text to appear in the doc
 
   expect(screen.queryByRole('button')).not.toBeInTheDocument()                   // use `queryBy` when checking if NOT in the document
   expect(within(screen.getByRole('dialog')).getByText(...)).toBeInTheDocument(); // drill down the DOM
