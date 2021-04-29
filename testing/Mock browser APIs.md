@@ -13,3 +13,16 @@ beforeAll(() => {
   }
 });
 ```
+
+
+You can also just temporarily mock them:
+
+```javascript
+  it("should show error state if it cannot parse the typing string", () => {
+    const spy = jest.spyOn(console, "warn").mockImplementation(() => {}); // suppress a momentjs warning
+
+    // test code goes here
+
+    spy.mockRestore();
+  });
+```
