@@ -11,7 +11,8 @@ A few caveats:
 - it must be a class component, not a function component
 - it will not work if the error is thrown in an event handler, so throw the error in a hook 
 
-For example https://codepen.io/alpo22/pen/QWEmVzg?editors=001:
+There are existing components out there: https://www.npmjs.com/package/react-error-boundary or create your own https://codepen.io/alpo22/pen/QWEmVzg?editors=001:
+
 ```
 class MyErrorBoundary extends React.Component {
   state = {
