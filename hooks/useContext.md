@@ -110,7 +110,7 @@ export function Child() {
 }
 ```
 
-### Re-renders
+## Re-renders
 
 Changing the state in a provider will cause all of the children to re-render, which can be problematic in big apps.
 Here are some ways to attempt to stop the re-renders: https://github.com/facebook/react/issues/15156#issuecomment-474590693
