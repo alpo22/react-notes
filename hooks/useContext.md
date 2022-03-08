@@ -31,42 +31,42 @@ With context, this drilling can be avoided and whatever is added to context beco
 
 ```javascript
 //MyContext.js
-export const LocaleContext = React.createContext();
+export const ThemeContext = React.createContext();
 	
-export default function LocaleProvider({children}) {
+export default function ThemeProvider({children}) {
   const [theme, setTheme] = React.useState('dark');
   const thingsToShare = { theme, setTheme };
 
   return (
-    <LocaleContext.Provider value={thingsToShare}>
+    <ThemeContext.Provider value={thingsToShare}>
       {children}
-    </LocaleContext.Provider>
+    </ThemeContext.Provider>
   );
 }
 ```
 ```javascript
 //App.js
-import LocaleProvider from './MyContext.js';
+import ThemeProvider from './MyContext.js';
 
 function App() {
   return (
-    <LocaleProvider>
+    <ThemeProvider>
       <Header />
       <Switch>
         <HomePage />
 	...
       </Switch>
       <Footer />
-    </LocaleProvider>
+    </ThemeProvider>
   );
 }
 ```
 ```javascript
 //Header.js
-import { LocaleContext } from './MyContext.js';
+import { ThemeContext } from './MyContext.js';
 
 function Header() {
-  const context = React.useContext(LocaleContext);
+  const context = React.useContext(ThemeContext);
   return <div className={`theme--${context.theme}`}>...</div>;
 }
 ```
@@ -109,3 +109,8 @@ export function Child() {
   return <h1>Hello {_context.name}</h1>
 }
 ```
+
+### Re-renders
+
+Changing the state in a provider will cause all of the children to re-render, which can be problematic in big apps.
+Here are some ways to attempt to stop the re-renders: https://github.com/facebook/react/issues/15156#issuecomment-474590693
