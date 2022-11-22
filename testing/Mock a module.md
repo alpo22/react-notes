@@ -20,6 +20,8 @@ test('renders', () => {
 #### Part of a module (e.g. "useRouteMatch" from react-router-dom)
 
 ```javascript
+import { useRouteMatch } from 'react-router-dom';
+
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
   useRouteMatch: jest.fn(),
