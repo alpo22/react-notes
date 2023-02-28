@@ -1,6 +1,6 @@
 ```javascript
 import * as React from 'react'
-import {render, screen, waitForElementToBeRemoved} from '@testing-library/react'
+import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react'
 import { within } from '@testing-library/dom';
 import userEvent from '@testing-library/user-event'
 import LoginForm from '../../components/LoginForm'
@@ -15,6 +15,7 @@ test('demonstrating lots of things', async () => {
   const usernameInput = screen.getByLabelText(/username/i)
   
   userEvent.type(usernameInput, "joe@gmail.com")                                 // type event
+  fireEvent.change(usernameInput, { target: { value: 'joe@gmail.com' } });       // another way to type, as above hasnt worked in the past
   userEvent.click(submitButton)                                                  // click event
   
   expect(handleSubmit).toHaveBeenCalled()                                        // assertion
